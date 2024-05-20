@@ -976,8 +976,8 @@ $(function () {
     function addToClubList(sectionId, i, club) {
 
         var div = $('#' + sectionId + '');
-        div.append('<div><span style="font-size:20px;cursor:pointer" onclick="$(\'#table-club-' + i + '\').toggle()">'+ i + ". " + club.players[0].club + '</span><span style="float:right;font-size:20px;padding-right:98px">' 
-        + tickToTimeD(club.elapsed_time_sum, eventInfo.time_accuracy) + '</span></div>')
+        div.append('<div><span style="font-size:20px;cursor:pointer" onclick="$(\'#table-club-' + i + '\').toggle()">'+ i + ". " + club.players[0].club + '</span><span style="float:right;font-size:20px;padding-right:17%">' 
+        + 'Teamtime' + tickToTimeD(club.elapsed_time_sum, eventInfo.time_accuracy) + '</span></div>')
         div.append('<table class="table table-scoreboard" style="" id="table-club-' + i + '">');
         var table = $('#' + sectionId + ' table:last');
         table.append($('<tbody>'));
@@ -1411,7 +1411,7 @@ $(function () {
 
         //use it
         //var str = hh + "h" + mm + ":" + ss;
-        var str = hh + ":" + mm + "." + ss;
+        var str = hh + ":" + mm + ":" + ss;
 
         if (5 - time_accuracy != 3)
             str += "." + mils;
