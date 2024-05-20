@@ -4,7 +4,7 @@
   "append": true,
   "watch": false,
   "script": "push_server.js",
-  "sourceDir": "/root/projects/ski-node",
-  "workingDir": "/root/projects/ski-node"
+  "sourceDir": "/root/projects/ski-node-1-2",
+  "workingDir": "/root/projects/ski-node-1-2"
  }
 ]
