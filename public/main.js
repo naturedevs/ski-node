@@ -987,23 +987,23 @@ $(function () {
             var player = club.players[i];
             tbody.append($('<tr id="' + "ranking-"+ player.running_section + '-' + player.num + '">'));
             tr = $('#' + sectionId + ' tr:last');
-            tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
+            // tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-2 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-3 left").html("&nbsp"));
-            tr.append($('<td>').addClass("col-1 left").html("&nbsp"));
+            // tr.append($('<td>').addClass("col-1 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 right").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 right").html("&nbsp"));
 
-            tr.children("td:nth-child(1)").html(player.rank);
+            // tr.children("td:nth-child(1)").html(player.rank);
             tr.children("td:nth-child(2)").html(player.num);
             tr.children("td:nth-child(3)").html(player.lastname + "&nbsp;" + player.firstname);
             tr.children("td:nth-child(4)").html(player.gender + "&nbsp;"); // 
             tr.children("td:nth-child(5)").html(player.year);
             tr.children("td:nth-child(6)").addClass("small-font");
-            tr.children("td:nth-child(6)").html(player.club + "&nbsp;");
+            // tr.children("td:nth-child(6)").html(player.club + "&nbsp;");
 
             if (player.status == 0) {
                 tr.children("td:nth-child(8)").html(tickToTimeD(player.elapsed_time, eventInfo.time_accuracy));
