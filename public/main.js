@@ -987,12 +987,12 @@ $(function () {
             var player = club.players[i];
             tbody.append($('<tr id="' + "ranking-"+ player.running_section + '-' + player.num + '">'));
             tr = $('#' + sectionId + ' tr:last');
-            tr.append($('<td>').addClass("col-1 center hidden").html("&nbsp"));
+            tr.append($('<td>').addClass("col-1 center d-none").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-2 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
-            tr.append($('<td>').addClass("col-3 left hidden").html("&nbsp"));
+            tr.append($('<td>').addClass("col-3 left d-none").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 right").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 right").html("&nbsp"));
