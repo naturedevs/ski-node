@@ -661,7 +661,7 @@ $(function () {
 
             // var player = ranking[i];
             var club = clubs_ranking[i];
-            if(i > 1 && club.elapsed_time_sum == clubs_ranking[i-1].elapsed_time_sum){
+            if(i > 0 && club.elapsed_time_sum == clubs_ranking[i-1].elapsed_time_sum){
                 clubs_ranking[i].rank = clubs_ranking[i-1].rank
                 club.rank = clubs_ranking[i-1].rank;
             }else{
