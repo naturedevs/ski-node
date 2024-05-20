@@ -844,7 +844,6 @@ $(function () {
 
     function clearRanking(tableId) {
         $('#' + tableId).html("");
-
     }
 
     function addToFinishList(tableId, i, player) {
@@ -977,7 +976,7 @@ $(function () {
     function addToClubList(sectionId, i, club) {
 
         var div = $('#' + sectionId + '');
-        div.append('<div><span style="font-size:20px;cursor:pointer" onclick="$(\'#table-club-' + i + '\').toggle()">'+ i + " - " + club.players[0].club + '</span><span style="float:right;font-size:20px;padding-right:98px">' 
+        div.append('<div><span style="font-size:20px;cursor:pointer" onclick="$(\'#table-club-' + i + '\').toggle()">'+ i + ". " + club.players[0].club + '</span><span style="float:right;font-size:20px;padding-right:98px">' 
         + tickToTimeD(club.elapsed_time_sum, eventInfo.time_accuracy) + '</span></div>')
         div.append('<table class="table table-scoreboard" style="" id="table-club-' + i + '">');
         var table = $('#' + sectionId + ' table:last');
@@ -1581,8 +1580,8 @@ $(function () {
             $("#to-finish-body").css("display", "block");
             $("#at-finish-body").css("display", "block");
             $("#ranking-body").css("display", "block");
-            $("#club-body").css("display", "none");
-            $("#club-body5").css("display", "none");
+            $("#club-body-parent").css("display", "none");
+            $("#club-body5-parent").css("display", "none");
             view_all_start_list = false;
     
             updateStartList();
@@ -1594,8 +1593,8 @@ $(function () {
             $("#to-finish-body").css("display", "none");
             $("#at-finish-body").css("display", "none");
             $("#ranking-body").css("display", "none");
-            $("#club-body").css("display", "none");
-            $("#club-body5").css("display", "none");
+            $("#club-body-parent").css("display", "none");
+            $("#club-body5-parent").css("display", "none");
             view_all_start_list = true;
 
             updateStartList();
@@ -1607,8 +1606,8 @@ $(function () {
             $("#to-finish-body").css("display", "none");
             $("#at-finish-body").css("display", "none");
             $("#ranking-body").css("display", "block");
-            $("#club-body5").css("display", "none");
-            $("#club-body").css("display", "none");
+            $("#club-body5-parent").css("display", "none");
+            $("#club-body-parent").css("display", "none");
 
         } else if(menu_id == "nav-clubs") {
             $("section#sec-live").css("display", "block");
@@ -1617,8 +1616,8 @@ $(function () {
             $("#to-finish-body").css("display", "none");
             $("#at-finish-body").css("display", "none");
             $("#ranking-body").css("display", "none");
-            $("#club-body5").css("display", "none");
-            $("#club-body").css("display", "block");
+            $("#club-body5-parent").css("display", "none");
+            $("#club-body-parent").css("display", "block");
         } else if(menu_id == "nav-clubs5") {
             $("section#sec-live").css("display", "block");
             $("#start-list-body").css("display", "none");
@@ -1626,8 +1625,8 @@ $(function () {
             $("#to-finish-body").css("display", "none");
             $("#at-finish-body").css("display", "none");
             $("#ranking-body").css("display", "none");
-            $("#club-body").css("display", "none");
-            $("#club-body5").css("display", "block");
+            $("#club-body-parent").css("display", "none");
+            $("#club-body5-parent").css("display", "block");
         }
     });
 });
