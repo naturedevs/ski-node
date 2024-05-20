@@ -991,7 +991,7 @@ $(function () {
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-3 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
-            tr.append($('<td>').addClass("col-3 center").html("&nbsp"));
+            tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-3 left d-none").html("&nbsp"));
             tr.append($('<td>').addClass("col-2 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-2 right").html("&nbsp"));
