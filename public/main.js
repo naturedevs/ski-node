@@ -987,44 +987,44 @@ $(function () {
             var player = club.players[i];
             tbody.append($('<tr id="' + "ranking-"+ player.running_section + '-' + player.num + '">'));
             tr = $('#' + sectionId + ' tr:last');
-            // tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
+            tr.append($('<td>').addClass("col-1 center hidden").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-2 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
-            tr.append($('<td>').addClass("col-3 left").html("&nbsp"));
-            // tr.append($('<td>').addClass("col-1 left").html("&nbsp"));
+            tr.append($('<td>').addClass("col-3 left hidden").html("&nbsp"));
+            tr.append($('<td>').addClass("col-1 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 right").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 right").html("&nbsp"));
 
-            // tr.children("td:nth-child(1)").html(player.rank);
-            tr.children("td:nth-child(1)").html(player.num);
-            tr.children("td:nth-child(2)").html(player.lastname + "&nbsp;" + player.firstname);
-            tr.children("td:nth-child(3)").html(player.gender + "&nbsp;"); // 
-            tr.children("td:nth-child(4)").html(player.year);
-            tr.children("td:nth-child(5)").addClass("small-font");
-            // tr.children("td:nth-child(6)").html(player.club + "&nbsp;");
+            tr.children("td:nth-child(1)").html(player.rank);
+            tr.children("td:nth-child(2)").html(player.num);
+            tr.children("td:nth-child(3)").html(player.lastname + "&nbsp;" + player.firstname);
+            tr.children("td:nth-child(4)").html(player.gender + "&nbsp;"); // 
+            tr.children("td:nth-child(5)").html(player.year);
+            tr.children("td:nth-child(6)").addClass("small-font");
+            tr.children("td:nth-child(6)").html(player.club + "&nbsp;");
 
             if (player.status == 0) {
-                tr.children("td:nth-child(7)").html(tickToTimeD(player.elapsed_time, eventInfo.time_accuracy));
-                tr.children("td:nth-child(8)").html(player.gap == 0?"&nbsp;":"+" + tickToTimeD(player.gap, eventInfo.time_accuracy));
+                tr.children("td:nth-child(8)").html(tickToTimeD(player.elapsed_time, eventInfo.time_accuracy));
+                tr.children("td:nth-child(9)").html(player.gap == 0?"&nbsp;":"+" + tickToTimeD(player.gap, eventInfo.time_accuracy));
             } else {
-                tr.children("td:nth-child(8)").html("&nbsp;");
+                tr.children("td:nth-child(9)").html("&nbsp;");
                 if (player.status == 1) {
-                    tr.children("td:nth-child(7)").html("DNS");
+                    tr.children("td:nth-child(8)").html("DNS");
                 } else if (player.status == 2) {
-                    tr.children("td:nth-child(7)").html("DNF");
+                    tr.children("td:nth-child(8)").html("DNF");
                 } else if (player.status == 3) {
-                    tr.children("td:nth-child(7)").html("DSQ");        
+                    tr.children("td:nth-child(8)").html("DSQ");        
                 } else if (player.status == 15) {
-                    tr.children("td:nth-child(7)").html("NPS");
+                    tr.children("td:nth-child(8)").html("NPS");
                 }
             }
         
-            tr.children("td:nth-child(6)").html("&nbsp;");
+            tr.children("td:nth-child(7)").html("&nbsp;");
             if (player.nation != "") {
-                tr.children("td:nth-child(6)").html(player.nation);
-                tr.children("td:nth-child(6)").css("background", "#232323 url('flags/" + player.nation.toLowerCase() + ".bmp') right no-repeat").css("background-size", "contain");
+                tr.children("td:nth-child(7)").html(player.nation);
+                tr.children("td:nth-child(7)").css("background", "#232323 url('flags/" + player.nation.toLowerCase() + ".bmp') right no-repeat").css("background-size", "contain");
             }
         }
         
