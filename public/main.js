@@ -663,7 +663,7 @@ $(function () {
             var club = clubs_ranking[i];
             club.rank = index;
             //if (player.finish_time != undefined) 
-            addToClubList(sectionId, index++, club);
+            addToClubList(sectionId, index++, club, clubs_ranking[0]);
             // if (player.running_section == eventInfo.inter_number + 2) 
             // {
             //     var p = players[player.num];
@@ -973,11 +973,11 @@ $(function () {
         
     }
 
-    function addToClubList(sectionId, i, club) {
+    function addToClubList(sectionId, i, club, club1) {
 
         var div = $('#' + sectionId + '');
-        div.append('<div><span style="font-size:20px;cursor:pointer;font-weight: 700;" onclick="$(\'#table-club-' + i + '\').toggle()">'+ i + ". " + club.players[0].club + '</span><span style="float:right;font-size:20px;padding-right:17%">' 
-        + 'Teamtime : ' + tickToTimeD(club.elapsed_time_sum, eventInfo.time_accuracy) + '</span><span style="float:right">asdf</span></div>')
+        div.append('<div style="position:relative"><span style="font-size:20px;cursor:pointer;font-weight: 700;" onclick="$(\'#table-club-' + i + '\').toggle()">'+ i + ". " + club.players[0].club + '</span><span style="float:right;font-size:20px;padding-right:17%">' 
+        + 'Teamtime : ' + tickToTimeD(club.elapsed_time_sum, eventInfo.time_accuracy) + '</span><span style="font-size:20px;padding-right:1%;position:absolute;right:1%">' + tickToTimeD(club.elapsed_time_sum - club1.elapsed_time_sum, eventInfo.time_accuracy) +'</span></div>')
         div.append('<table class="table table-scoreboard" style="" id="table-club-' + i + '">');
         var table = $('#' + sectionId + ' table:last');
         table.append($('<tbody>'));
