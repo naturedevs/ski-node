@@ -976,8 +976,8 @@ $(function () {
     function addToClubList(sectionId, i, club) {
 
         var div = $('#' + sectionId + '');
-        div.append('<div><span style="font-size:20px;cursor:pointer" onclick="$(\'#table-club-' + i + '\').toggle()">'+ i + ". " + club.players[0].club + '</span><span style="float:right;font-size:20px;padding-right:17%">' 
-        + 'Teamtime' + tickToTimeD(club.elapsed_time_sum, eventInfo.time_accuracy) + '</span></div>')
+        div.append('<div><span style="font-size:20px;cursor:pointer;font-weight: 700;" onclick="$(\'#table-club-' + i + '\').toggle()">'+ i + ". " + club.players[0].club + '</span><span style="float:right;font-size:20px;padding-right:17%">' 
+        + 'Teamtime : ' + tickToTimeD(club.elapsed_time_sum, eventInfo.time_accuracy) + '</span><span style="float:right">asdf</span></div>')
         div.append('<table class="table table-scoreboard" style="" id="table-club-' + i + '">');
         var table = $('#' + sectionId + ' table:last');
         table.append($('<tbody>'));
