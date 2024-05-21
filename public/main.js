@@ -724,9 +724,9 @@ $(function () {
             
                 if(clubs.hasOwnProperty(player.club)) {
                     clubs[player.club].players.push(player);
-                    player.style="500"
+                    player.fontweight="500"
                     if(clubs[player.club].players.length > 4) continue;
-                    player.style="900"
+                    player.fontweight="900"
                     clubs[player.club].elapsed_time_sum += player.elapsed_time;
                 }else{
                     clubs[player.club] = {
@@ -1084,7 +1084,7 @@ $(function () {
 
         for (let i = 0; i < club.players.length; i ++) {
             var player = club.players[i];
-            tbody.append($('<tr style="font-weight:' + player.style + '" id="' + "ranking-"+ player.running_section + '-' + player.num + '">'));
+            tbody.append($('<tr style="font-weight:' + player.fontweight + '" id="' + "ranking-"+ player.running_section + '-' + player.num + '">'));
             tr = $('#' + sectionId + ' tr:last');
             tr.append($('<td>').addClass("col-1 center d-none").html("&nbsp"));
             tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
