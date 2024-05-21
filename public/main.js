@@ -630,6 +630,7 @@ $(function () {
                 //addToRankList(tableId, index ++, player);
             
                 if(clubs.hasOwnProperty(player.club)) {
+                    if(clubs[player.club].length > 4) continue;
                     clubs[player.club].players.push(player);
                     clubs[player.club].elapsed_time_sum += player.elapsed_time;
                 }else{
