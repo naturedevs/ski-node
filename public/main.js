@@ -604,20 +604,19 @@ $(function () {
         let sectionId = 'club-body';
         clearRanking(sectionId);
 
+        let ranking = JSON.parse(JSON.stringify(Object.values(players)));
+        ranking.sort((a, b) => {
+            return a.elapsed_time - b.elapsed_time;
+        });
+
         let index = 1;
         let clubs = {};
-        for (let key in players) {
-            var player = players[key];
+        for (let i = 0; i < ranking.length; i ++) {
 
+            var player = ranking[i];
             //if (player.finish_time != undefined) 
             if (player.running_section == eventInfo.inter_number + 2) 
             {
-                //let elapsed_time = 0;
-                //for (let i = 0; i <= eventInfo.inter_number + 1; i ++) {
-                //    if (player.sections[i] && player.sections[i].elapsed_time) {
-                //        elapsed_time = parseInt(player.sections[i].elapsed_time);
-                //    }
-                //}
                 try {
                     elapsed_time = parseInt(player.sections[eventInfo.inter_number + 1].elapsed_time);    
                 } catch (error) {
@@ -643,7 +642,6 @@ $(function () {
             }
         }
 
-        let ranking = JSON.parse(JSON.stringify(Object.values(players)));
         let clubs_ranking = JSON.parse(JSON.stringify(Object.values(clubs)));
         // resort by ranking
         ranking.sort((a, b) => {
@@ -700,7 +698,7 @@ $(function () {
         let sectionId = 'club-body5';
         clearRanking(sectionId);
         let ranking = JSON.parse(JSON.stringify(Object.values(players)));
-        ranking.sort((b, a) => {
+        ranking.sort((a, b) => {
             return a.elapsed_time - b.elapsed_time;
         });
 
