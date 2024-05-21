@@ -600,7 +600,7 @@ $(function () {
 
         let tableId = 'live-club';
         let sectionId = 'club-body';
-        clearRanking(tableId);
+        clearRanking(sectionId);
 
         let index = 1;
         let clubs = {};
