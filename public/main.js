@@ -702,18 +702,12 @@ $(function () {
 
         let index = 1;
         let clubs = {};
-        for (let key in players) {
-            var player = players[key];
+        for (let i = 0; i < ranking.length; i ++) {
 
+            var player = ranking[i];
             //if (player.finish_time != undefined) 
             if (player.running_section == eventInfo.inter_number + 2) 
             {
-                //let elapsed_time = 0;
-                //for (let i = 0; i <= eventInfo.inter_number + 1; i ++) {
-                //    if (player.sections[i] && player.sections[i].elapsed_time) {
-                //        elapsed_time = parseInt(player.sections[i].elapsed_time);
-                //    }
-                //}
                 try {
                     elapsed_time = parseInt(player.sections[eventInfo.inter_number + 1].elapsed_time);    
                 } catch (error) {
