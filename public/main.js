@@ -1013,7 +1013,8 @@ $(function () {
 
             if (player.status == 0) {
                 tr.children("td:nth-child(8)").html(tickToTimeD(player.elapsed_time, eventInfo.time_accuracy));
-                tr.children("td:nth-child(9)").html(player.gap == 0?"&nbsp;":"+" + tickToTimeD(player.gap, eventInfo.time_accuracy));
+                tr.children("td:nth-child(9)").html("&nbsp;");
+                // tr.children("td:nth-child(9)").html(player.gap == 0?"&nbsp;":"+" + tickToTimeD(player.gap, eventInfo.time_accuracy));
             } else {
                 tr.children("td:nth-child(9)").html("&nbsp;");
                 if (player.status == 1) {
