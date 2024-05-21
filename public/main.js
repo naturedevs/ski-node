@@ -1517,7 +1517,7 @@ $(function () {
             tr.append($('<td>').addClass("col-6 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-2 center").html("&nbsp"));
 
-            tr.children("td:nth-child(1)").html(event.info.title);
+            tr.children("td:nth-child(1)").html('<img src="./giphy.gif"/>'+event.info.title);
             tr.children("td:nth-child(2)").html(event.info.eventTitle);
             tr.children("td:nth-child(3)").html(formatDate(event.info.event_date));
 
