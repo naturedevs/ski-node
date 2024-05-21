@@ -167,6 +167,8 @@ $(function () {
 
         updateClubList();
 
+        updateClub5List();
+
         updateStartList();
 
         updateFinishList();
@@ -600,6 +602,102 @@ $(function () {
     
         let tableId = 'live-club';
         let sectionId = 'club-body';
+        clearRanking(sectionId);
+
+        let index = 1;
+        let clubs = {};
+        for (let key in players) {
+            var player = players[key];
+
+            //if (player.finish_time != undefined) 
+            if (player.running_section == eventInfo.inter_number + 2) 
+            {
+                //let elapsed_time = 0;
+                //for (let i = 0; i <= eventInfo.inter_number + 1; i ++) {
+                //    if (player.sections[i] && player.sections[i].elapsed_time) {
+                //        elapsed_time = parseInt(player.sections[i].elapsed_time);
+                //    }
+                //}
+                try {
+                    elapsed_time = parseInt(player.sections[eventInfo.inter_number + 1].elapsed_time);    
+                } catch (error) {
+                    
+                }
+                
+                if (player.status != 0)
+                    elapsed_time = 99999999;
+
+                player.elapsed_time = elapsed_time;
+                //addToRankList(tableId, index ++, player);
+            
+                if(clubs.hasOwnProperty(player.club)) {
+                    clubs[player.club].players.push(player);
+                    clubs[player.club].elapsed_time_sum += player.elapsed_time;
+                }else{
+                    clubs[player.club] = {
+                        elapsed_time_sum: player.elapsed_time,
+                        players:[]
+                    }
+                    clubs[player.club].players.push(player);
+                }
+            }
+        }
+
+        let ranking = JSON.parse(JSON.stringify(Object.values(players)));
+        let clubs_ranking = JSON.parse(JSON.stringify(Object.values(clubs)));
+        // resort by ranking
+        ranking.sort((a, b) => {
+            return a.club.localeCompare(b.club);
+        });
+        console.log(clubs_ranking);
+        clubs_ranking.sort((a, b) => {
+            return a.elapsed_time_sum - b.elapsed_time_sum;
+            // return a.elapsed_time_sum.localeCompare(b.elapsed_time_sum);
+        });
+        console.log(clubs);
+        console.log(clubs_ranking);
+
+        let first_elapsed_time = 0;
+        index = 1;
+        for (let i = 0; i < clubs_ranking.length; i ++) {
+
+            // var player = ranking[i];
+            var club = clubs_ranking[i];
+            if(i > 0 && club.elapsed_time_sum == clubs_ranking[i-1].elapsed_time_sum){
+                clubs_ranking[i].rank = clubs_ranking[i-1].rank
+                club.rank = clubs_ranking[i-1].rank;
+            }else{
+                clubs_ranking[i].rank = index;
+                club.rank = index;
+            }
+            //if (player.finish_time != undefined) 
+            addToClubList(sectionId, index++, club, clubs_ranking[0]);
+            // if (player.running_section == eventInfo.inter_number + 2) 
+            // {
+            //     var p = players[player.num];
+            //     if (p.status == 0)
+            //         p.rank = index;
+            //     else
+            //         p.rank = "&nbsp;"
+
+            //     //player.rank = index;
+            //     if (first_elapsed_time == 0) {
+            //         p.gap = 0;
+            //         first_elapsed_time = p.elapsed_time;
+            //     } else {
+            //         p.gap = p.elapsed_time - first_elapsed_time;
+            //     }
+
+            //     addToClubList(tableId, index ++, p);
+            // }
+        }
+        
+    }
+
+    function updateClub5List() {
+    
+        let tableId = 'live-club';
+        let sectionId = 'club-body5';
         clearRanking(sectionId);
 
         let index = 1;
