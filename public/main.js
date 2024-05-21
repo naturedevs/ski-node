@@ -699,6 +699,10 @@ $(function () {
         let tableId = 'live-club';
         let sectionId = 'club-body5';
         clearRanking(sectionId);
+        let ranking = JSON.parse(JSON.stringify(Object.values(players)));
+        ranking.sort((a, b) => {
+            return a.club.localeCompare(b.club);
+        });
 
         let index = 1;
         let clubs = {};
@@ -733,12 +737,8 @@ $(function () {
             }
         }
 
-        let ranking = JSON.parse(JSON.stringify(Object.values(players)));
         let clubs_ranking = JSON.parse(JSON.stringify(Object.values(clubs)));
         // resort by ranking
-        ranking.sort((a, b) => {
-            return a.club.localeCompare(b.club);
-        });
         console.log(clubs_ranking);
         clubs_ranking.sort((a, b) => {
             return a.elapsed_time_sum - b.elapsed_time_sum;
