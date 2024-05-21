@@ -725,7 +725,7 @@ $(function () {
                 if(clubs.hasOwnProperty(player.club)) {
                     clubs[player.club].players.push(player);
                     player.fontweight="500"
-                    if(clubs[player.club].players.length > 4) continue;
+                    if(clubs[player.club].players.length > 5) continue;
                     player.fontweight="900"
                     clubs[player.club].elapsed_time_sum += player.elapsed_time;
                 }else{
@@ -733,6 +733,7 @@ $(function () {
                         elapsed_time_sum: player.elapsed_time,
                         players:[]
                     }
+                    player.fontweight="900"
                     clubs[player.club].players.push(player);
                 }
             }
@@ -762,7 +763,7 @@ $(function () {
                 club.rank = index;
             }
             //if (player.finish_time != undefined) 
-            addToClubList(sectionId, index++, club, clubs_ranking[0]);
+            addToClub5List(sectionId, index++, club, clubs_ranking[0]);
             // if (player.running_section == eventInfo.inter_number + 2) 
             // {
             //     var p = players[player.num];
@@ -1073,6 +1074,64 @@ $(function () {
     }
 
     function addToClubList(sectionId, i, club, club1) {
+
+        var div = $('#' + sectionId + '');
+        div.append('<div style="position:relative;background:darkcyan"><span style="font-size:20px;cursor:pointer;font-weight: 700;" onclick="$(\'#table-club-' + i + '\').toggle()">'+ club.rank + ". " + club.players[0].club + '</span><span style="position:absolute;font-size:20px;left:67%">' 
+        + 'Teamtime : ' + tickToTimeD(club.elapsed_time_sum, eventInfo.time_accuracy) + '</span><span style="font-size:20px;padding-right:1%;position:absolute;right:1%">' + tickToTimeD(club.elapsed_time_sum - club1.elapsed_time_sum, eventInfo.time_accuracy) +'</span></div>')
+        div.append('<table class="table table-scoreboard" style="" id="table-club-' + i + '">');
+        var table = $('#' + sectionId + ' table:last');
+        table.append($('<tbody>'));
+        tbody = $('#' + sectionId + ' tbody:last');
+
+        for (let i = 0; i < club.players.length; i ++) {
+            var player = club.players[i];
+            tbody.append($('<tr style="font-weight:' + player.fontweight + '" id="' + "ranking-"+ player.running_section + '-' + player.num + '">'));
+            tr = $('#' + sectionId + ' tr:last');
+            tr.append($('<td>').addClass("col-1 center d-none").html("&nbsp"));
+            tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
+            tr.append($('<td>').addClass("col-3 left").html("&nbsp"));
+            tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
+            tr.append($('<td>').addClass("col-1 center").html("&nbsp"));
+            tr.append($('<td>').addClass("col-3 left d-none").html("&nbsp"));
+            tr.append($('<td>').addClass("col-2 left").html("&nbsp"));
+            tr.append($('<td>').addClass("col-2 right").html("&nbsp"));
+            tr.append($('<td>').addClass("col-2 right").html("&nbsp"));
+
+            tr.children("td:nth-child(1)").html(player.rank);
+            tr.children("td:nth-child(2)").html(player.num);
+            tr.children("td:nth-child(3)").html(player.lastname + "&nbsp;" + player.firstname);
+            tr.children("td:nth-child(4)").html(player.gender + "&nbsp;"); // 
+            tr.children("td:nth-child(5)").html(player.year);
+            tr.children("td:nth-child(6)").addClass("small-font");
+            tr.children("td:nth-child(6)").html(player.club + "&nbsp;");
+
+            if (player.status == 0) {
+                tr.children("td:nth-child(8)").html(tickToTimeD(player.elapsed_time, eventInfo.time_accuracy));
+                tr.children("td:nth-child(9)").html("&nbsp;");
+                // tr.children("td:nth-child(9)").html(player.gap == 0?"&nbsp;":"+" + tickToTimeD(player.gap, eventInfo.time_accuracy));
+            } else {
+                tr.children("td:nth-child(9)").html("&nbsp;");
+                if (player.status == 1) {
+                    tr.children("td:nth-child(8)").html("DNS");
+                } else if (player.status == 2) {
+                    tr.children("td:nth-child(8)").html("DNF");
+                } else if (player.status == 3) {
+                    tr.children("td:nth-child(8)").html("DSQ");        
+                } else if (player.status == 15) {
+                    tr.children("td:nth-child(8)").html("NPS");
+                }
+            }
+        
+            tr.children("td:nth-child(7)").html("&nbsp;");
+            if (player.nation != "") {
+                tr.children("td:nth-child(7)").html(player.nation);
+                tr.children("td:nth-child(7)").css("background", "#232323 url('flags/" + player.nation.toLowerCase() + ".bmp') right no-repeat").css("background-size", "contain");
+            }
+        }
+        
+    }
+
+    function addToClub5List(sectionId, i, club, club1) {
 
         var div = $('#' + sectionId + '');
         div.append('<div style="position:relative;background:darkcyan"><span style="font-size:20px;cursor:pointer;font-weight: 700;" onclick="$(\'#table-club-' + i + '\').toggle()">'+ club.rank + ". " + club.players[0].club + '</span><span style="position:absolute;font-size:20px;left:67%">' 
