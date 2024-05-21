@@ -700,7 +700,7 @@ $(function () {
         let sectionId = 'club-body5';
         clearRanking(sectionId);
         let ranking = JSON.parse(JSON.stringify(Object.values(players)));
-        ranking.sort((a, b) => {
+        ranking.sort((b, a) => {
             return a.club.localeCompare(b.club);
         });
 
