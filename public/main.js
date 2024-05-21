@@ -1513,8 +1513,8 @@ $(function () {
         for(event of events) {
             $('#live-events').append($('<tr>'));
             tr = $('#live-events tr:last');
-            tr.append($('<td>').addClass("col-4 left").html("&nbsp"));
-            tr.append($('<td>').addClass("col-6 left").html("&nbsp"));
+            tr.append($('<td>').addClass("col-7 left").html("&nbsp"));
+            tr.append($('<td>').addClass("col-3 left").html("&nbsp"));
             tr.append($('<td>').addClass("col-2 center").html("&nbsp"));
 
             tr.children("td:nth-child(1)").html('<img src="./giphy.gif" style="width:80px;float:right"/>'+event.info.title);
